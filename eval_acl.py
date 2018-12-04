@@ -23,6 +23,7 @@ def main(args):
 
 
 if __name__ == '__main__':
+    print(_REF_DIR)
     assert exists(_REF_DIR)
     parser = argparse.ArgumentParser(
         description='Evaluate the output files to get the numbers reported'

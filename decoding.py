@@ -19,13 +19,20 @@ from data.data import CnnDmDataset
 
 
 try:
-    DATASET_DIR = os.environ['DATA']
+    # TODO Change to json settings
+    # DATASET_DIR: object = os.environ['DATA']
+    with open("SETTINGS.json") as data_file:
+        DATASET_DIR = json.load(data_file)["DATASET_DIR"]
+
 except KeyError:
     print('please use environment variable to specify data directories')
+
 
 class DecodeDataset(CnnDmDataset):
     """ get the article sentences only (for decoding use)"""
     def __init__(self, split):
+        # DATASET_DIR: object = os.environ['DATA']
+        with open("SETTINGS.json") as file: DATASET_DIR = json.load(file)["DATASET_DIR"]
         assert split in ['val', 'test']
         super().__init__(split, DATASET_DIR)
 
@@ -48,7 +55,8 @@ def load_best_ckpt(model_dir, reverse=False):
                    key=lambda c: float(c.split('-')[1]), reverse=reverse)
     print('loading checkpoint {}...'.format(ckpts[0]))
     ckpt = torch.load(
-        join(model_dir, 'ckpt/{}'.format(ckpts[0]))
+        join(model_dir, 'ckpt/{}'.format(ckpts[0])),
+        map_location='cpu'
     )['state_dict']
     return ckpt
 

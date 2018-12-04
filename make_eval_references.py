@@ -8,6 +8,9 @@ from datetime import timedelta
 from utils import count_data
 from decoding import make_html_safe
 
+
+
+# TODO change os environ to json file
 try:
     DATA_DIR = os.environ['DATA']
 except KeyError:

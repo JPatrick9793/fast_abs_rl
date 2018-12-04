@@ -1,0 +1,19 @@
+{
+
+  "DATASET_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/cnn-dailymail/finished_files",
+
+  "decode_full_model": {
+    "DECODE_OUTPUT_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/outputs/decoded_files",
+    "PRE_TRAINED_MODEL_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/pretrained/acl",
+    "BATCH": 32,
+    "BEAMS": 1,
+    "DIV": 1.0,
+    "MAX_DEC_WORD": 30,
+    "TEST_OR_VAL": "test",
+    "CUDA": false
+  },
+
+  "train_word2vec": {
+
+  }
+}

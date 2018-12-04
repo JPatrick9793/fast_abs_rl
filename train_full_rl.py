@@ -30,6 +30,8 @@ from metric import compute_rouge_l, compute_rouge_n
 
 MAX_ABS_LEN = 30
 
+
+# TODO change os environ to json file
 try:
     DATA_DIR = os.environ['DATA']
 except KeyError:
@@ -46,6 +48,7 @@ class RLDataset(CnnDmDataset):
         art_sents = js_data['article']
         abs_sents = js_data['abstract']
         return art_sents, abs_sents
+
 
 def load_ext_net(ext_dir):
     ext_meta = json.load(open(join(ext_dir, 'meta.json')))

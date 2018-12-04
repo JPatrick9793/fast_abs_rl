@@ -13,10 +13,12 @@ import gensim
 from utils import count_data
 
 
+# TODO change os environ to json file
 try:
     DATA_DIR = os.environ['DATA']
 except KeyError:
     print('please use environment variable to specify data directories')
+
 
 class Sentences(object):
     """ needed for gensim word2vec training"""

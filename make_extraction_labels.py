@@ -12,6 +12,7 @@ from utils import count_data
 from metric import compute_rouge_l
 
 
+# TODO change os environ to json file
 try:
     DATA_DIR = os.environ['DATA']
 except KeyError:
