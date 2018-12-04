@@ -1,0 +1,11 @@
+Building_Escape/Building_Escape.xcworkspace
+Building_Escape/Saved
+Building_Escape/Binaries
+Building_Escape/Intermediate
+Building_Escape/Content/StarterContent
+Building_Escape/cmake-build-debug
+
+outputs/*
+data/sub_data/*
+acl18_results/*
+*__pycache__
