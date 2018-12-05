@@ -21,6 +21,8 @@ PAD = 0
 UNK = 1
 START = 2
 END = 3
+
+
 def make_vocab(wc, vocab_size):
     word2id, id2word = {}, {}
     word2id['<pad>'] = PAD
@@ -33,7 +35,7 @@ def make_vocab(wc, vocab_size):
 
 
 def make_embedding(id2word, w2v_file, initializer=None):
-    attrs = basename(w2v_file).split('.')  #word2vec.{dim}d.{vsize}k.bin
+    attrs = basename(w2v_file).split('.')  # word2vec.{dim}d.{vsize}k.bin
     w2v = gensim.models.Word2Vec.load(w2v_file).wv
     vocab_size = len(id2word)
     emb_dim = int(attrs[-3][:-1])
@@ -54,3 +56,9 @@ def make_embedding(id2word, w2v_file, initializer=None):
             else:
                 oovs.append(i)
     return embedding, oovs
+
+class dotdict(dict):
+    """dot.notation access to dictionary attributes"""
+    __getattr__ = dict.get
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__

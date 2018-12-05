@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="543927a7-8316-49a0-a2da-a299c1afc353" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/johnconway.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SETTINGS.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fast_abs_rl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fast_abs_rl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SETTINGS.json" beforeDir="false" afterPath="$PROJECT_DIR$/SETTINGS.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decode_full_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/decode_full_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/decoding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eval_acl.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval_acl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/make_eval_references.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_eval_references.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/make_extraction_labels.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_extraction_labels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metric.py" beforeDir="false" afterPath="$PROJECT_DIR$/metric.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_abstractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_abstractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_full_rl.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_full_rl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_word2vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_word2vec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training.py" beforeDir="false" afterPath="$PROJECT_DIR$/training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,53 +30,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/decode_full_model.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SETTINGS.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="183" selection-start-line="183" selection-end-line="183" />
+            <state relative-caret-position="124">
+              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding>
-                <element signature="e#53#68#0" expanded="true" />
-                <element signature="e#861#1028#0" />
-                <element signature="e#1047#1323#0" />
-                <element signature="e#4124#4454#0" />
+                <element signature="n#!!block;n#decode_full_model#0;n#!!top" />
+                <element signature="n#!!block;n#train_word2vec#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+        <entry file="file://$PROJECT_DIR$/train_abstractor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="2385">
+              <caret line="164" column="26" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="26" />
+              <folding>
+                <element signature="e#28#39#0" expanded="true" />
+                <element signature="e#4171#4421#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SETTINGS.json">
+        <entry file="file://$PROJECT_DIR$/training.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="104" selection-start-line="5" selection-start-column="104" selection-end-line="5" selection-end-column="104" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+            <state relative-caret-position="323">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="e#49#58#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/os.py">
+        <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/multiprocessing/process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="225" selection-start-line="225" selection-end-line="225" />
+            <state relative-caret-position="1665">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
             </state>
           </provider>
         </entry>
@@ -80,7 +82,18 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>map_location</find>
+      <find>args</find>
+      <find>=</find>
+      <find>_METEOR_PATH</find>
+      <find>os.environ['METEOR']</find>
+      <find>MET</find>
+      <find>os</find>
+      <find>get_basic_grad_fn</find>
+      <find>running validation ...</find>
     </findStrings>
+    <replaceStrings>
+      <replace>:</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -90,14 +103,19 @@
       <list>
         <option value="$PROJECT_DIR$/eval_acl.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/decoding.py" />
+        <option value="$PROJECT_DIR$/../routines/routines/other.py" />
         <option value="$PROJECT_DIR$/train_word2vec.py" />
-        <option value="$PROJECT_DIR$/train_full_rl.py" />
+        <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/metric.py" />
         <option value="$PROJECT_DIR$/make_eval_references.py" />
         <option value="$PROJECT_DIR$/make_extraction_labels.py" />
-        <option value="$PROJECT_DIR$/decoding.py" />
         <option value="$PROJECT_DIR$/decode_full_model.py" />
+        <option value="$PROJECT_DIR$/train_full_rl.py" />
         <option value="$PROJECT_DIR$/SETTINGS.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/train_abstractor.py" />
+        <option value="$PROJECT_DIR$/training.py" />
       </list>
     </option>
   </component>
@@ -105,6 +123,7 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -117,6 +136,17 @@
             <path>
               <item name="fast_abs_rl" type="b2602c69:ProjectViewProjectNode" />
               <item name="fast_abs_rl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fast_abs_rl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fast_abs_rl" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fast_abs_rl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fast_abs_rl" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="abstractor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -166,7 +196,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.decode_full_model">
+  <component name="RunManager" selected="Python.train_abstractor">
+    <configuration name="Unnamed" type="JupiterNotebook" factoryName="Jupyter Notebook" nameIsGenerated="true">
+      <module name="fast_abs_rl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/fast_abs_rl/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+      <method v="2" />
+    </configuration>
     <configuration name="decode_full_model" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="fast_abs_rl" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -233,11 +280,84 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="make_extraction_labels" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fast_abs_rl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/make_extraction_labels.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_abstractor" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="fast_abs_rl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/fast_abs_rl/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_abstractor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_word2vec" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fast_abs_rl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_word2vec.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Jupyter Notebook.Unnamed" />
+      <item itemvalue="Python.train_abstractor" />
       <item itemvalue="Python.eval_acl" />
       <item itemvalue="Python.decode_full_model" />
       <item itemvalue="Python.make_datafiles" />
+      <item itemvalue="Python.train_word2vec" />
+      <item itemvalue="Python.make_extraction_labels" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.make_extraction_labels" />
+        <item itemvalue="Python.train_word2vec" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS,SHOW_INHERITED,ALPHA_COMPARATOR" />
@@ -255,7 +375,7 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -266,15 +386,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4236984" visible="true" weight="0.26638478" />
-      <window_info id="Structure" order="1" sideWeight="0.57630163" side_tool="true" weight="0.26638478" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.42418033" visible="true" weight="0.3812544" />
+      <window_info id="Structure" order="1" sideWeight="0.5758197" side_tool="true" visible="true" weight="0.3812544" />
       <window_info id="Favorites" order="2" sideWeight="0.5019084" side_tool="true" weight="0.22128259" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4120482" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.37710842" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4120482" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4554217" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
@@ -305,6 +424,26 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/os.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>tokenized_article_batch</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/attention.py">
@@ -352,27 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/site-packages/toolz/_signatures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="641" selection-start-line="641" selection-end-line="641" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/inspect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="2233" selection-start-line="2233" selection-end-line="2233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/batcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/posixpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -382,21 +500,6 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/argparse.pyi">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_word2vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="14" selection-start-line="14" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/decoded_files/output/1.dec">
       <provider selected="true" editor-type-id="text-editor" />
@@ -414,48 +517,14 @@
     <entry file="file://$PROJECT_DIR$/decoded_files/log.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/make_eval_references.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_full_rl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/rl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/make_extraction_labels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="225" selection-start-line="225" selection-end-line="225" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/decoding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#26#37#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -466,30 +535,320 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/inspect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="2208" selection-start-line="2208" selection-end-line="2208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/site-packages/toolz/_signatures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="641" selection-start-line="641" selection-end-line="641" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="476" selection-start-line="476" selection-end-line="476" />
+          <folding>
+            <element signature="e#241#472#0" />
+            <element signature="e#501#1288#1" />
+            <element signature="e#1320#1946#1" />
+            <element signature="e#1997#2308#0" />
+            <element signature="e#2349#2814#0" />
+            <element signature="e#2349#2780#1" />
+            <element signature="e#2869#4347#0" />
+            <element signature="e#2869#3508#1" />
+            <element signature="e#3581#3698#0" />
+            <element signature="e#3597#3668#0" />
+            <element signature="e#4104#4292#0" />
+            <element signature="e#4120#4225#0" />
+            <element signature="e#4404#6140#0" />
+            <element signature="e#4404#4745#1" />
+            <element signature="e#4805#4899#0" />
+            <element signature="e#4975#5095#0" />
+            <element signature="e#4991#5065#0" />
+            <element signature="e#5552#5748#0" />
+            <element signature="e#5568#5682#0" />
+            <element signature="e#5789#6083#0" />
+            <element signature="e#5823#6069#0" />
+            <element signature="e#6190#7256#0" />
+            <element signature="e#6190#6549#1" />
+            <element signature="e#6628#6722#0" />
+            <element signature="e#6797#6900#0" />
+            <element signature="e#7292#7880#0" />
+            <element signature="e#7414#7734#0" />
+            <element signature="e#7452#7734#0" />
+            <element signature="e#7452#7510#0" />
+            <element signature="e#7795#7859#0" />
+            <element signature="e#7915#9380#0" />
+            <element signature="e#7915#9275#1" />
+            <element signature="e#9423#9917#0" />
+            <element signature="e#9423#9864#1" />
+            <element signature="e#9946#10101#0" />
+            <element signature="e#9946#10055#1" />
+            <element signature="e#10141#10384#0" />
+            <element signature="e#10141#10329#1" />
+            <element signature="e#10415#10620#0" />
+            <element signature="e#10415#10540#1" />
+            <element signature="e#10652#10863#0" />
+            <element signature="e#10652#10782#1" />
+            <element signature="e#10893#11100#0" />
+            <element signature="e#10893#11021#1" />
+            <element signature="e#11145#14179#0" />
+            <element signature="e#11145#13717#1" />
+            <element signature="e#13840#14029#0" />
+            <element signature="e#13888#14029#0" />
+            <element signature="e#13904#14014#0" />
+            <element signature="e#14067#14142#0" />
+            <element signature="e#14233#15166#0" />
+            <element signature="e#14233#15036#1" />
+            <element signature="e#15223#15822#0" />
+            <element signature="e#15223#15686#1" />
+            <element signature="e#15875#16491#0" />
+            <element signature="e#15875#16363#1" />
+            <element signature="e#16545#16797#0" />
+            <element signature="e#16732#16777#0" />
+            <element signature="e#16854#17651#0" />
+            <element signature="e#17551#17629#0" />
+            <element signature="e#17996#18243#0" />
+            <element signature="e#18092#18243#0" />
+            <element signature="e#18132#18229#0" />
+            <element signature="e#18298#18849#0" />
+            <element signature="e#18380#18549#0" />
+            <element signature="e#18636#18849#0" />
+            <element signature="e#18699#18849#0" />
+            <element signature="e#18916#19049#0" />
+            <element signature="e#19092#19688#0" />
+            <element signature="e#19139#19258#0" />
+            <element signature="e#19311#19418#0" />
+            <element signature="e#19471#19575#0" />
+            <element signature="e#19807#19852#0" />
+            <element signature="e#19992#20091#0" />
+            <element signature="e#20312#20509#0" />
+            <element signature="e#20328#20439#0" />
+            <element signature="e#20723#20822#0" />
+            <element signature="e#21053#21258#0" />
+            <element signature="e#21069#21184#0" />
+            <element signature="e#21537#21741#0" />
+            <element signature="e#21553#21663#0" />
+            <element signature="e#21906#22174#0" />
+            <element signature="e#22256#23396#0" />
+            <element signature="e#22256#22676#1" />
+            <element signature="e#22721#22798#0" />
+            <element signature="e#22937#23038#0" />
+            <element signature="e#23099#23194#0" />
+            <element signature="e#23258#23369#0" />
+            <element signature="e#23524#27012#0" />
+            <element signature="e#23524#25171#1" />
+            <element signature="e#25407#26601#0" />
+            <element signature="e#25477#26535#0" />
+            <element signature="e#25581#25924#0" />
+            <element signature="e#25668#25811#0" />
+            <element signature="e#26001#26103#0" />
+            <element signature="e#26224#26535#0" />
+            <element signature="e#26242#26449#0" />
+            <element signature="e#26634#27012#0" />
+            <element signature="e#26694#27012#0" />
+            <element signature="e#26741#27012#0" />
+            <element signature="e#27078#29181#0" />
+            <element signature="e#27078#27734#1" />
+            <element signature="e#28104#28470#0" />
+            <element signature="e#28396#28470#0" />
+            <element signature="e#28523#28980#0" />
+            <element signature="e#28595#28763#0" />
+            <element signature="e#28818#28980#0" />
+            <element signature="e#29026#29181#0" />
+            <element signature="e#29217#29693#0" />
+            <element signature="e#29217#29617#1" />
+            <element signature="e#29757#30620#0" />
+            <element signature="e#29757#30150#1" />
+            <element signature="e#30262#30390#0" />
+            <element signature="e#30314#30390#0" />
+            <element signature="e#30455#30620#0" />
+            <element signature="e#30669#30967#0" />
+            <element signature="e#30769#30856#0" />
+            <element signature="e#30821#30856#0" />
+            <element signature="e#30908#30967#0" />
+            <element signature="e#31001#31121#1" />
+            <element signature="e#31237#31638#1" />
+            <element signature="e#31869#32557#0" />
+            <element signature="e#31869#32482#1" />
+            <element signature="e#32618#33767#0" />
+            <element signature="e#32618#33336#1" />
+            <element signature="e#33429#33767#0" />
+            <element signature="e#33546#33767#0" />
+            <element signature="e#33809#34150#1" />
+            <element signature="e#34299#34599#1" />
+            <element signature="e#34667#34856#0" />
+            <element signature="e#34770#34856#0" />
+            <element signature="e#34809#34856#0" />
+            <element signature="e#34894#34941#0" />
+            <element signature="e#34976#35006#0" />
+            <element signature="e#35042#35294#0" />
+            <element signature="e#35042#35276#1" />
+            <element signature="e#35328#36202#0" />
+            <element signature="e#35668#35795#0" />
+            <element signature="e#35911#36153#0" />
+            <element signature="e#36235#36680#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/batcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/sub_data/pretrained/acl/meta.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#26#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../routines/routines/other.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="208" lean-forward="true" selection-start-line="208" selection-end-line="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+          <folding>
+            <element signature="e#19#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_word2vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="17" selection-end-column="49" />
+          <folding>
+            <element signature="e#41#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_eval_references.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="e#62#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_extraction_labels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="17" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/rl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/decode_full_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        <state relative-caret-position="255">
+          <caret line="180" column="6" selection-start-line="180" selection-start-column="6" selection-end-line="180" selection-end-column="6" />
           <folding>
-            <element signature="e#53#68#0" expanded="true" />
-            <element signature="e#861#1028#0" />
-            <element signature="e#1047#1323#0" />
-            <element signature="e#4124#4454#0" />
+            <element signature="e#53#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_full_rl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="145" column="28" lean-forward="true" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/os.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="227" column="23" lean-forward="true" selection-start-line="227" selection-start-column="23" selection-end-line="227" selection-end-column="23" />
+          <folding>
+            <element signature="e#6907#7274#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/fast_abs_rl/lib/python3.6/multiprocessing/process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_abstractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2385">
+          <caret line="164" column="26" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="26" />
+          <folding>
+            <element signature="e#28#39#0" expanded="true" />
+            <element signature="e#4171#4421#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#49#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SETTINGS.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="104" selection-start-line="5" selection-start-column="104" selection-end-line="5" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="124">
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!block;n#decode_full_model#0;n#!!top" />
+            <element signature="n#!!block;n#train_word2vec#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,5 +1,4 @@
 """ run decoding of rnn-ext + abs + RL (+ rerank)"""
-import argparse
 import json
 import os
 from os.path import join
@@ -25,7 +24,93 @@ from decoding import make_html_safe
 def decode(save_path, model_dir, split, batch_size,
            beam_size, diverse, max_len, cuda):
     start = time()
-    # setup model
+
+    # SET UP MODELS
+    abstractor, extractor, meta = get_abstractor_extractor_and_meta(beam_size, cuda, max_len, model_dir)
+
+    # SET UP LOADER
+    loader, n_data = get_loader_and_ndata(batch_size, split)
+
+    # PREPARE SAVE PATHS AND LOGS
+    prepare_save_paths_and_logs(beam_size, diverse, meta, save_path, split)
+
+    # Decoding
+    i = 0
+    with torch.no_grad():
+        for i_debug, raw_article_batch in enumerate(loader):
+
+            # At this point, raw_article_batch is a list of lists
+            # each entry in the list is an article, each list within that list are sentences
+            tokenized_article_batch: map = map(tokenize(None), raw_article_batch)
+            ext_arts = []
+            ext_inds = []
+
+            # so basically, this entire section tokenizes the sentences and removes punctuation, stop words, etc...
+            #############################
+            # this tokenize the sentences
+            for raw_art_sents in tokenized_article_batch:
+                ext = extractor(raw_art_sents)[:-1]  # exclude EOE
+                if not ext:
+                    # use top-5 if nothing is extracted
+                    # in some rare cases rnn-ext does not extract at all
+                    ext = list(range(5))[:len(raw_art_sents)]
+                else:
+                    ext = [i.item() for i in ext]
+                ext_inds += [(len(ext_arts), len(ext))]
+                ext_arts += [raw_art_sents[i] for i in ext]
+            # Here's where the magic happens
+            if beam_size > 1:
+                # if beamsize is > 1, send through abstracter and rerank
+                all_beams = abstractor(ext_arts, beam_size, diverse)
+                dec_outs = rerank_mp(all_beams, ext_inds)
+            else:
+                # if beamsize = 1, simply send through abstractor
+                dec_outs = abstractor(ext_arts)
+            #############################
+
+            # assert the batch size and output are proper sizes???
+            assert i == batch_size*i_debug
+
+            for j, n in ext_inds:
+                decoded_sents = [' '.join(dec) for dec in dec_outs[j:j+n]]
+                with open(join(save_path, 'output/{}.dec'.format(i)), 'w') as f:
+                    f.write(make_html_safe('\n'.join(decoded_sents)))
+                i += 1
+                print('{}/{} ({:.2f}%) decoded in {} seconds\r'.format(i, n_data, i/n_data*100,
+                                                                       timedelta(seconds=int(time()-start))),
+                      end='')
+    print()
+
+
+def prepare_save_paths_and_logs(beam_size, diverse, meta, save_path, split):
+    os.makedirs(join(save_path, 'output'))
+    dec_log = {
+        'abstractor': meta['net_args']['abstractor'],
+        'extractor': meta['net_args']['extractor'],
+        'rl': True,
+        'split': split,
+        'beam': beam_size,
+        'diverse': diverse
+    }
+    with open(join(save_path, 'log.json'), 'w') as f:
+        json.dump(dec_log, f, indent=4)
+
+
+def get_loader_and_ndata(batch_size, split):
+    def coll(batch):
+        articles = list(filter(bool, batch))
+        return articles
+
+    dataset = DecodeDataset(split)
+    n_data = len(dataset)
+    loader = DataLoader(
+        dataset, batch_size=batch_size, shuffle=False, num_workers=4,
+        collate_fn=coll
+    )
+    return loader, n_data
+
+
+def get_abstractor_extractor_and_meta(beam_size, cuda, max_len, model_dir):
     with open(join(model_dir, 'meta.json')) as f:
         meta = json.loads(f.read())
     if meta['net_args']['abstractor'] is None:
@@ -41,72 +126,7 @@ def decode(save_path, model_dir, split, batch_size,
             abstractor = BeamAbstractor(join(model_dir, 'abstractor'),
                                         max_len, cuda)
     extractor = RLExtractor(model_dir, cuda=cuda)
-
-    # setup loader
-    def coll(batch):
-        articles = list(filter(bool, batch))
-        return articles
-    dataset = DecodeDataset(split)
-
-    n_data = len(dataset)
-    loader = DataLoader(
-        dataset, batch_size=batch_size, shuffle=False, num_workers=4,
-        collate_fn=coll
-    )
-
-    # prepare save paths and logs
-    os.makedirs(join(save_path, 'output'))
-    dec_log = {
-        'abstractor': meta['net_args']['abstractor'],
-        'extractor': meta['net_args']['extractor'],
-        'rl': True,
-        'split': split,
-        'beam': beam_size,
-        'diverse': diverse}
-    with open(join(save_path, 'log.json'), 'w') as f:
-        json.dump(dec_log, f, indent=4)
-
-    # Decoding
-    i = 0
-    with torch.no_grad():
-        for i_debug, raw_article_batch in enumerate(loader):
-
-            # At this point, raw_article_batch is a list of lists
-            # each entry in the list is an article, each list within that list are sentences
-            tokenized_article_batch = map(tokenize(None), raw_article_batch)
-            ext_arts = []
-            ext_inds = []
-
-            # this tokenize the sentences
-            for raw_art_sents in tokenized_article_batch:
-                ext = extractor(raw_art_sents)[:-1]  # exclude EOE
-                if not ext:
-                    # use top-5 if nothing is extracted
-                    # in some rare cases rnn-ext does not extract at all
-                    ext = list(range(5))[:len(raw_art_sents)]
-                else:
-                    ext = [i.item() for i in ext]
-                ext_inds += [(len(ext_arts), len(ext))]
-                ext_arts += [raw_art_sents[i] for i in ext]
-
-            # Heres where the magic happens
-            if beam_size > 1:
-                # if beamsize is > 1, send through abstracter and rerank
-                all_beams = abstractor(ext_arts, beam_size, diverse)
-                dec_outs = rerank_mp(all_beams, ext_inds)
-            else:
-                # if beamsize = 1, simply send through abstractor
-                dec_outs = abstractor(ext_arts)
-            assert i == batch_size*i_debug
-            for j, n in ext_inds:
-                decoded_sents = [' '.join(dec) for dec in dec_outs[j:j+n]]
-                with open(join(save_path, 'output/{}.dec'.format(i)), 'w') as f:
-                    f.write(make_html_safe('\n'.join(decoded_sents)))
-                i += 1
-                print('{}/{} ({:.2f}%) decoded in {} seconds\r'.format(i, n_data, i/n_data*100,
-                                                                       timedelta(seconds=int(time()-start))),
-                      end='')
-    print()
+    return abstractor, extractor, meta
 
 
 _PRUNE = defaultdict(
@@ -151,36 +171,6 @@ def _compute_score(hyps):
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(
-    #     description='run decoding of the full model (RL)')
-    # parser.add_argument('--path', required=True, help='path to store/eval')
-    # parser.add_argument('--model_dir', help='root of the full model')
-    #
-    # # dataset split
-    # data = parser.add_mutually_exclusive_group(required=True)
-    # data.add_argument('--val', action='store_true', help='use validation set')
-    # data.add_argument('--test', action='store_true', help='use test set')
-    #
-    # # decode options
-    # parser.add_argument('--batch', type=int, action='store', default=32,
-    #                     help='batch size of faster decoding')
-    # parser.add_argument('--beam', type=int, action='store', default=1,
-    #                     help='beam size for beam-search (reranking included)')
-    # parser.add_argument('--div', type=float, action='store', default=1.0,
-    #                     help='diverse ratio for the diverse beam-search')
-    # parser.add_argument('--max_dec_word', type=int, action='store', default=30,
-    #                     help='maximun words to be decoded for the abstractor')
-    #
-    # parser.add_argument('--no-cuda', action='store_true',
-    #                     help='disable GPU training')
-    # args = parser.parse_args()
-    # args.cuda = torch.cuda.is_available() and not args.no_cuda
-    #
-    # data_split = 'test' if args.test else 'val'
-    #
-    # decode(args.path, args.model_dir,
-    #        data_split, args.batch, args.beam, args.div,
-    #        args.max_dec_word, args.cuda)
 
     with open("SETTINGS.json") as f: args = json.load(f)["decode_full_model"]
 

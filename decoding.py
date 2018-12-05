@@ -19,7 +19,6 @@ from data.data import CnnDmDataset
 
 
 try:
-    # TODO Change to json settings
     # DATASET_DIR: object = os.environ['DATA']
     with open("SETTINGS.json") as data_file:
         DATASET_DIR = json.load(data_file)["DATASET_DIR"]

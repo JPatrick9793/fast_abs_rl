@@ -1,5 +1,5 @@
 """ ROUGE utils"""
-import os
+import json
 import threading
 import subprocess as sp
 from collections import Counter, deque
@@ -12,12 +12,14 @@ def make_n_grams(seq, n):
     ngrams = (tuple(seq[i:i+n]) for i in range(len(seq)-n+1))
     return ngrams
 
+
 def _n_gram_match(summ, ref, n):
     summ_grams = Counter(make_n_grams(summ, n))
     ref_grams = Counter(make_n_grams(ref, n))
     grams = min(summ_grams, ref_grams, key=len)
     count = sum(min(summ_grams[g], ref_grams[g]) for g in grams)
     return count
+
 
 @curry
 def compute_rouge_n(output, reference, n=1, mode='f'):
@@ -52,10 +54,12 @@ def _lcs_dp(a, b):
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     return dp
 
+
 def _lcs_len(a, b):
     """ compute the length of longest common subsequence between a and b"""
     dp = _lcs_dp(a, b)
     return dp[-1][-1]
+
 
 @curry
 def compute_rouge_l(output, reference, mode='f'):
@@ -72,7 +76,7 @@ def compute_rouge_l(output, reference, mode='f'):
         f_score = 2 * (precision * recall) / (precision + recall)
         if mode == 'p':
             score = precision
-        if mode == 'r':
+        elif mode == 'r':
             score = recall
         else:
             score = f_score
@@ -85,7 +89,7 @@ def _lcs(a, b):
     i = len(a)
     j = len(b)
     lcs = deque()
-    while (i > 0 and j > 0):
+    while i > 0 and j > 0:
         if a[i-1] == b[j-1]:
             lcs.appendleft(a[i-1])
             i -= 1
@@ -96,6 +100,7 @@ def _lcs(a, b):
             j -= 1
     assert len(lcs) == dp[-1][-1]
     return lcs
+
 
 def compute_rouge_l_summ(summs, refs, mode='f'):
     """ summary level ROUGE-L"""
@@ -119,7 +124,7 @@ def compute_rouge_l_summ(summs, refs, mode='f'):
         f_score = 2 * (precision * recall) / (precision + recall)
         if mode == 'p':
             score = precision
-        if mode == 'r':
+        elif mode == 'r':
             score = recall
         else:
             score = f_score
@@ -127,10 +132,14 @@ def compute_rouge_l_summ(summs, refs, mode='f'):
 
 
 try:
-    _METEOR_PATH = os.environ['METEOR']
+    # _METEOR_PATH = os.environ['METEOR']
+    with open("SETTINGS.json") as f:
+        _METEOR_PATH = json.load(f)["METEOR"]
 except KeyError:
     print('Warning: METEOR is not configured')
     _METEOR_PATH = None
+
+
 class Meteor(object):
     def __init__(self):
         assert _METEOR_PATH is not None

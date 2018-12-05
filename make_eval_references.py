@@ -9,10 +9,10 @@ from utils import count_data
 from decoding import make_html_safe
 
 
-
-# TODO change os environ to json file
 try:
-    DATA_DIR = os.environ['DATA']
+    # DATA_DIR = os.environ['DATA']
+    with open("SETTINGS.json") as f:
+        DATA_DIR = json.load(f)["DATASET_DIR"]
 except KeyError:
     print('please use environment variable to specify data directories')
 
@@ -33,11 +33,13 @@ def dump(split):
             f.write(make_html_safe('\n'.join(abs_sents)))
     print('finished in {}'.format(timedelta(seconds=time()-start)))
 
+
 def main():
     for split in ['val', 'test']:  # evaluation of train data takes too long
         if not exists(join(DATA_DIR, 'refs', split)):
             os.makedirs(join(DATA_DIR, 'refs', split))
         dump(split)
+
 
 if __name__ == '__main__':
     main()

@@ -17,7 +17,11 @@ def get_basic_grad_fn(net, clip_grad, max_grad=1e2):
     def f():
         grad_norm = clip_grad_norm_(
             [p for p in net.parameters() if p.requires_grad], clip_grad)
-        grad_norm = grad_norm.item()
+        # TODO fix this bit
+        try:
+            grad_norm = grad_norm.item()
+        except Exception as e:
+            pass
         if max_grad is not None and grad_norm >= max_grad:
             print('WARNING: Exploding Gradients {:.2f}'.format(grad_norm))
             grad_norm = max_grad
@@ -31,10 +35,12 @@ def compute_loss(net, criterion, fw_args, loss_args):
     loss = criterion(*((net(*fw_args),) + loss_args))
     return loss
 
+
 @curry
 def val_step(loss_step, fw_args, loss_args):
     loss = loss_step(fw_args, loss_args)
     return loss.size(0), loss.sum().item()
+
 
 @curry
 def basic_validate(net, criterion, val_batches):

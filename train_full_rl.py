@@ -31,9 +31,10 @@ from metric import compute_rouge_l, compute_rouge_n
 MAX_ABS_LEN = 30
 
 
-# TODO change os environ to json file
 try:
-    DATA_DIR = os.environ['DATA']
+    # DATA_DIR = os.environ['DATA']
+    with open("SETTINGS.json") as f:
+        DATA_DIR = json.load(f)["DATASET_DIR"]
 except KeyError:
     print('please use environment variable to specify data directories')
 

@@ -12,9 +12,10 @@ from utils import count_data
 from metric import compute_rouge_l
 
 
-# TODO change os environ to json file
 try:
-    DATA_DIR = os.environ['DATA']
+    # DATASET_DIR: object = os.environ['DATA']
+    with open("SETTINGS.json") as f:
+        DATASET_DIR = json.load(f)["DATASET_DIR"]
 except KeyError:
     print('please use environment variable to specify data directories')
 
@@ -39,9 +40,10 @@ def get_extract_label(art_sents, abs_sents):
             break
     return extracted, scores
 
+
 @curry
 def process(split, i):
-    data_dir = join(DATA_DIR, split)
+    data_dir = join(DATASET_DIR, split)
     with open(join(data_dir, '{}.json'.format(i))) as f:
         data = json.loads(f.read())
     tokenize = compose(list, _split_words)
@@ -56,21 +58,23 @@ def process(split, i):
     with open(join(data_dir, '{}.json'.format(i)), 'w') as f:
         json.dump(data, f, indent=4)
 
+
 def label_mp(split):
     """ process the data split with multi-processing"""
     start = time()
     print('start processing {} split...'.format(split))
-    data_dir = join(DATA_DIR, split)
+    data_dir = join(DATASET_DIR, split)
     n_data = count_data(data_dir)
     with mp.Pool() as pool:
         list(pool.imap_unordered(process(split),
                                  list(range(n_data)), chunksize=1024))
     print('finished in {}'.format(timedelta(seconds=time()-start)))
 
+
 def label(split):
     start = time()
     print('start processing {} split...'.format(split))
-    data_dir = join(DATA_DIR, split)
+    data_dir = join(DATASET_DIR, split)
     n_data = count_data(data_dir)
     for i in range(n_data):
         print('processing {}/{} ({:.2f}%%)\r'.format(i, n_data, 100*i/n_data),

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/fast_abs_rl.iml" filepath="$PROJECT_DIR$/.idea/fast_abs_rl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../routines/.idea/routines.iml" filepath="$PROJECT_DIR$/../routines/.idea/routines.iml" />
     </modules>
   </component>
 </project>

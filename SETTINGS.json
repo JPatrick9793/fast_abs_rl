@@ -1,9 +1,10 @@
 {
 
   "DATASET_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/cnn-dailymail/finished_files",
+  "METEOR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/meteor-1.5.tar.gz",
 
   "decode_full_model": {
-    "DECODE_OUTPUT_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/outputs/decoded_files",
+    "DECODE_OUTPUT_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/outputs/decoded_files2",
     "PRE_TRAINED_MODEL_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/pretrained/acl",
     "BATCH": 32,
     "BEAMS": 1,
@@ -14,6 +15,31 @@
   },
 
   "train_word2vec": {
+    "SAVE_DIR": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/word2vec/",
+    "DIM": 128
+  },
+
+  "train_abstractor": {
+    "batch": 32,
+    "bi": true,
+    "ckpt_freq": 10,
+    "clip": 2.0,
+    "cuda": false,
+    "debug": false,
+    "decay": 0.5,
+    "emb_dim": 128,
+    "lr": 0.001,
+    "lr_p": 0,
+    "max_abs": 30,
+    "max_art": 100,
+    "n_hidden": 256,
+    "n_layer": 1,
+    "no_bi": false,
+    "no_cuda": false,
+    "path": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/model/abstractor/",
+    "patience": 5,
+    "vsize": 30000,
+    "w2v": "/Users/johnconway/Google_Drive/NOVA_IQ/text_summarization/fast_abs_rl/data/sub_data/word2vec/word2vec.128d.226k.bin"
 
   }
 }

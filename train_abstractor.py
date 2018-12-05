@@ -1,5 +1,4 @@
 """ train the abstractor"""
-import argparse
 import json
 import os
 from os.path import join, exists
@@ -7,7 +6,6 @@ import pickle as pkl
 
 from cytoolz import compose
 
-import torch
 from torch import optim
 from torch.nn import functional as F
 from torch.optim.lr_scheduler import ReduceLROnPlateau
@@ -25,15 +23,19 @@ from data.batcher import BucketedGenerater
 
 from utils import PAD, UNK, START, END
 from utils import make_vocab, make_embedding
+from utils import dotdict
 
 # NOTE: bucket size too large may sacrifice randomness,
 #       to low may increase # of PAD tokens
 BUCKET_SIZE = 6400
 
 try:
-    DATA_DIR = os.environ['DATA']
+    # DATA_DIR = os.environ['DATA']
+    with open("SETTINGS.json") as f:
+        DATA_DIR = json.load(f)["DATASET_DIR"]
 except KeyError:
     print('please use environment variable to specify data directories')
+
 
 class MatchDataset(CnnDmDataset):
     """ single article sentence -> single abstract sentence
@@ -81,6 +83,7 @@ def configure_training(opt, lr, clip_grad, lr_decay, batch_size):
 
     return criterion, train_params
 
+
 def build_batchers(word2id, cuda, debug):
     prepro = prepro_fn(args.max_art, args.max_abs)
     def sort_key(sample):
@@ -108,6 +111,7 @@ def build_batchers(word2id, cuda, debug):
     val_batcher = BucketedGenerater(val_loader, prepro, sort_key, batchify,
                                     single_run=True, fork=not debug)
     return train_batcher, val_batcher
+
 
 def main(args):
     # create data batcher, vocabulary
@@ -167,54 +171,62 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='training of the abstractor (ML)'
-    )
-    parser.add_argument('--path', required=True, help='root of the model')
+
+    # parser = argparse.ArgumentParser(
+    #     description='training of the abstractor (ML)'
+    # )
+    # parser.add_argument('--path', required=True, help='root of the model')
+    #
+    #
+    # parser.add_argument('--vsize', type=int, action='store', default=30000,
+    #                     help='vocabulary size')
+    # parser.add_argument('--emb_dim', type=int, action='store', default=128,
+    #                     help='the dimension of word embedding')
+    # parser.add_argument('--w2v', action='store',
+    #                     help='use pretrained word2vec embedding')
+    # parser.add_argument('--n_hidden', type=int, action='store', default=256,
+    #                     help='the number of hidden units of LSTM')
+    # parser.add_argument('--n_layer', type=int, action='store', default=1,
+    #                     help='the number of layers of LSTM')
+    # parser.add_argument('--no-bi', action='store_true',
+    #                     help='disable bidirectional LSTM encoder')
+    #
+    # # length limit
+    # parser.add_argument('--max_art', type=int, action='store', default=100,
+    #                     help='maximun words in a single article sentence')
+    # parser.add_argument('--max_abs', type=int, action='store', default=30,
+    #                     help='maximun words in a single abstract sentence')
+    # # training options
+    # parser.add_argument('--lr', type=float, action='store', default=1e-3,
+    #                     help='learning rate')
+    # parser.add_argument('--decay', type=float, action='store', default=0.5,
+    #                     help='learning rate decay ratio')
+    # parser.add_argument('--lr_p', type=int, action='store', default=0,
+    #                     help='patience for learning rate decay')
+    # parser.add_argument('--clip', type=float, action='store', default=2.0,
+    #                     help='gradient clipping')
+    # parser.add_argument('--batch', type=int, action='store', default=32,
+    #                     help='the training batch size')
+    # parser.add_argument(
+    #     '--ckpt_freq', type=int, action='store', default=3000,
+    #     help='number of update steps for checkpoint and validation'
+    # )
+    # parser.add_argument('--patience', type=int, action='store', default=5,
+    #                     help='patience for early stopping')
+    #
+    # parser.add_argument('--debug', action='store_true',
+    #                     help='run in debugging mode')
+    # parser.add_argument('--no-cuda', action='store_true',
+    #                     help='disable GPU training')
+    # args = parser.parse_args()
+    # args.bi = not args.no_bi
+    # args.cuda = torch.cuda.is_available() and not args.no_cuda
 
 
-    parser.add_argument('--vsize', type=int, action='store', default=30000,
-                        help='vocabulary size')
-    parser.add_argument('--emb_dim', type=int, action='store', default=128,
-                        help='the dimension of word embedding')
-    parser.add_argument('--w2v', action='store',
-                        help='use pretrained word2vec embedding')
-    parser.add_argument('--n_hidden', type=int, action='store', default=256,
-                        help='the number of hidden units of LSTM')
-    parser.add_argument('--n_layer', type=int, action='store', default=1,
-                        help='the number of layers of LSTM')
-    parser.add_argument('--no-bi', action='store_true',
-                        help='disable bidirectional LSTM encoder')
+    with open("SETTINGS.json") as f:
+        args = json.load(f)["train_abstractor"]
 
-    # length limit
-    parser.add_argument('--max_art', type=int, action='store', default=100,
-                        help='maximun words in a single article sentence')
-    parser.add_argument('--max_abs', type=int, action='store', default=30,
-                        help='maximun words in a single abstract sentence')
-    # training options
-    parser.add_argument('--lr', type=float, action='store', default=1e-3,
-                        help='learning rate')
-    parser.add_argument('--decay', type=float, action='store', default=0.5,
-                        help='learning rate decay ratio')
-    parser.add_argument('--lr_p', type=int, action='store', default=0,
-                        help='patience for learning rate decay')
-    parser.add_argument('--clip', type=float, action='store', default=2.0,
-                        help='gradient clipping')
-    parser.add_argument('--batch', type=int, action='store', default=32,
-                        help='the training batch size')
-    parser.add_argument(
-        '--ckpt_freq', type=int, action='store', default=3000,
-        help='number of update steps for checkpoint and validation'
-    )
-    parser.add_argument('--patience', type=int, action='store', default=5,
-                        help='patience for early stopping')
-
-    parser.add_argument('--debug', action='store_true',
-                        help='run in debugging mode')
-    parser.add_argument('--no-cuda', action='store_true',
-                        help='disable GPU training')
-    args = parser.parse_args()
-    args.bi = not args.no_bi
-    args.cuda = torch.cuda.is_available() and not args.no_cuda
+    # class which allows dictionary keys to be accessed via the dot operator
+    args = dotdict(args)
 
     main(args)
